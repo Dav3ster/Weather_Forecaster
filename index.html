@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Weather Forecaster</title>
+</head>
+
+<body>
+
+  <div class="main-container">
+
+    <div class="today-data">
+
+      <div class="date-container">
+        <div class="time" id="time">
+          12:30 <span id="am-pm">PM</span>
+        </div>
+        <div class="date" id="date">
+          Sunday, 23 Oct
+        </div>
+      </div>
+
+      <div class="weater-data" id="today-weather-data">
+        <div class="weater-item">
+          <div>Temperature</div>
+          <div>72F</div>
+        </div>
+        <div class="weater-item">
+          <div>Humidity</div>
+          <div>25%</div>
+        </div>
+        <div class="weater-item">
+          <div>Wind Speed</div>
+          <div>10mph</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="city-container">
+      <div class="city" id="city">
+        Durham
+      </div>
+      <div class="state" id="state">
+        NC
+      </div>
+    </div>
+  </div>
+
+  <div class="five-day-forecast-container">
+
+    <div class="current-day" id="current-temperature">
+      <div class="day">Today</div>
+      <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon" class="weather-picture">
+      <div class="temp">72F</div>
+      <div class="humidity">40%</div>
+      <div class="wind-speed">20mph</div>
+    </div>
+
+    <div class="forecast" id="forecast">
+
+      <div class="weather-item">
+        <div class="day">Tuesday</div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon" class="weather-picture">
+        <div class="temp">72F</div>
+        <div class="humidity">40%</div>
+        <div class="wind-speed">20mph</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="day">Wednesday</div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon" class="weather-picture">
+        <div class="temp">72F</div>
+        <div class="humidity">40%</div>
+        <div class="wind-speed">20mph</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="day">Thursday</div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon" class="weather-picture">
+        <div class="temp">72F</div>
+        <div class="humidity">40%</div>
+        <div class="wind-speed">20mph</div>
+      </div>
+
+      <div class="weather-item">
+        <div class="day">Friday</div>
+        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather-icon" class="weather-picture">
+        <div class="temp">72F</div>
+        <div class="humidity">40%</div>
+        <div class="wind-speed">20mph</div>
+      </div>
+
+    </div>
+
+  </div>
+ 
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

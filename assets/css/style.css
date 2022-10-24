@@ -1,0 +1,106 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background:url(https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?cs=srgb&dl=pexels-johannes-plenio-1118873.jpg&fm=jpg&_gl=1*ccchdd*_ga*NzUyOTk1MTkyLjE2NjY1Nzc0NTI.*_ga_8JE65Q40S6*MTY2NjU3NzQ1Mi4xLjEuMTY2NjU3NzUxNS4wLjAuMA..);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-container{
+    padding: 30px 80px;
+    color: white;
+}
+
+.today-data{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.date-container{
+    font-weight: 100;
+}
+
+.date-container .time{
+    font-size: 80px;
+}
+
+.date-container #am-pm{
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+.date-container .date{
+    font-size: 30px;
+}
+
+.city-container{
+    text-align: end;
+}
+
+.city-container .city .state{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.today-data .weather-data{
+    display: flex;
+    flex-direction: column;
+}
+
+.today-data .weather-data .weather-item{
+    display: flex;
+    justify-content: space-between;
+}
+
+.five-day-forecast-container{
+    background: rgba(24,24,27,0.8);
+    padding: 25px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.five-day-forecast-container .current-day{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.five-day-forecast-container .forecast{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.five-day-forecast-container .forecast .weather-item{
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 5px;
+}
+
+@media only screen and (max-width:730px){
+    .five-day-forecast-container{
+        justify-content: start;
+        align-items: none;
+        overflow-y: scroll;
+    }
+}
