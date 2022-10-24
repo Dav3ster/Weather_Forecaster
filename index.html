@@ -20,35 +20,20 @@
 
       <div class="date-container">
         <div class="time" id="time">
-          12:30 <span id="am-pm">PM</span>
+          <span id="am-pm">PM</span>
         </div>
         <div class="date" id="date">
-          Sunday, 23 Oct
         </div>
       </div>
 
-      <div class="weater-data" id="today-weather-data">
-        <div class="weater-item">
-          <div>Temperature</div>
-          <div>72F</div>
-        </div>
-        <div class="weater-item">
-          <div>Humidity</div>
-          <div>25%</div>
-        </div>
-        <div class="weater-item">
-          <div>Wind Speed</div>
-          <div>10mph</div>
-        </div>
+      <div class="weater-data" id="current-weather-items">
       </div>
     </div>
 
     <div class="city-container">
+      <div class="time-zone" id="time-zone"></div>
       <div class="city" id="city">
         Durham
-      </div>
-      <div class="state" id="state">
-        NC
       </div>
     </div>
   </div>
@@ -101,6 +86,7 @@
 
   </div>
  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 
