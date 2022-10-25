@@ -11,7 +11,12 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-const API_KEY = '1d4a8ce213a4c48804861b2fc4271d70';
+var searchButton = document.querySelector("#submitbtn");
+searchButton.addEventListener("click", retrieveApiData);
+
+const API_KEY = 'd91f911bcf2c0f925fb6535547a5ddc9';
+
+const weatherApiRootUrl = 'https://api.openweathermap.org';
 
 setInterval(() => {
   const time = new Date();
@@ -33,7 +38,7 @@ function retrieveApiData() {
   navigator.geolocation.getCurrentPosition((success) => {
     let {latitude, longitude} = success.coords;
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=imperial&appid=${API_KEY}`)
+    fetch(`${weatherApiRootUrl}/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=minutely,hourly&appid=${API_KEY}`)
     .then(res => res.json()).then(data => {
       console.log(data);
       displayWeatherData(data);
@@ -42,20 +47,44 @@ function retrieveApiData() {
 }
 
 function displayWeatherData (data){
-  let {temp, humidity} = data.list[0].main;
-  let {speed} = data.list[0].wind;
+  let {temp, humidity, wind_speed} = data.current;
 
   currentWeatherItemsEl.innerHTML = 
   `<div class="weater-item">
-     <div>Temperature</div>
+     <div>Current Temperature</div>
      <div>${temp}F</div>
     </div>
   <div class="weater-item">
-    <div>Humidity</div>
+    <div>Current Humidity</div>
     <div>${humidity}%</div>
   </div>
    <div class="weater-item">
     <div>Wind Speed</div>
-    <div>${speed}</div>
+    <div>${wind_speed}</div>
   </div>`;
+
+  let fiveDayForecast = ''
+  data.daily.forEach((day, idx) => {
+    if(idx == 0){
+      currentTempEl.innerHTML =`
+      <div class="current-day" id="current-temperature">
+      <div class="day">${window.moment(day.dt*1000).format('dddd')}</div>
+      <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather-icon" class="weather-picture">
+      <div class="temp">${day.temp.day}F</div>
+      <div class="humidity">Humidity: ${day.humidity}%</div>
+      <div class="wind-speed">Wind: ${day.wind_speed}Mph</div>
+    </div>
+      `
+    }else if(idx >= 1 && idx <= 4){
+      fiveDayForecast += `
+        <div class="weather-item">
+        <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
+        <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather-icon" class="weather-picture">
+        <div class="temp">${day.temp.day}F</div>
+        <div class="humidity">Humidity: ${day.humidity}%</div>
+        <div class="wind-speed">Wind: ${day.wind_speed}Mph</div>
+        </div>`
+    }
+  })
+  forecastEl.innerHTML = fiveDayForecast;
 }
