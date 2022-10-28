@@ -5,6 +5,7 @@ const timezoneEl = document.getElementById('time-zone');
 const cityEl = document.getElementById('city');
 const forecastEl = document.getElementById('forecast');
 const currentTempEl = document.getElementById('current-temperature');
+var cityformEl = document.getElementById("city-form")
 
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -30,9 +31,6 @@ setInterval(() => {
 
   dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month];
 }, 1000);
-
-var cityformEl = document.getElementById("city-form")
-
 
 cityformEl.addEventListener("submit", (event) => {
   event.preventDefault();
