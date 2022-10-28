@@ -11,10 +11,8 @@ const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-var searchButton = document.querySelector("#submitbtn");
-searchButton.addEventListener("click", retrieveApiData);
-
 const API_KEY = 'd91f911bcf2c0f925fb6535547a5ddc9';
+const api_key = '1d4a8ce213a4c48804861b2fc4271d70';
 
 const weatherApiRootUrl = 'https://api.openweathermap.org';
 
@@ -33,21 +31,35 @@ setInterval(() => {
   dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month];
 }, 1000);
 
-retrieveApiData()
-function retrieveApiData() {
-  navigator.geolocation.getCurrentPosition((success) => {
-    let {latitude, longitude} = success.coords;
+var cityformEl = document.getElementById("city-form")
 
-    fetch(`${weatherApiRootUrl}/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=minutely,hourly&appid=${API_KEY}`)
+
+cityformEl.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  var cityInput = document.getElementById('citySelection').value;
+  console.log(`City: ${cityInput}`);
+  
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&appid=${api_key}`)
     .then(res => res.json()).then(data => {
       console.log(data);
-      displayWeatherData(data);
+      
+      var latitude = data.city.coord.lat;
+      var longitude = data.city.coord.lon;
+      console.log(latitude, longitude);
+          
+      fetch(`${weatherApiRootUrl}/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=minutely,hourly&appid=${API_KEY}`)
+        .then(res => res.json()).then(data => {
+          console.log(data);
+          displayWeatherData(data);
+        })
     })
-  })
-}
+    .catch(error => console.log(error));
+ })
 
 function displayWeatherData (data){
   let {temp, humidity, wind_speed} = data.current;
+  console.log(temp, humidity, wind_speed);
 
   currentWeatherItemsEl.innerHTML = 
   `<div class="weater-item">

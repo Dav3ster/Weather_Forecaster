@@ -16,11 +16,10 @@
 
   <div class="main-container">
 
-    <form>
-      <p id="searchcity">City:</p>
-      <input type="text" id="userCity" name="city" value="">
-      <input type="submit" id="submitbtn" value="Submit">
-    </form>
+    <form class="form-inline" id="city-form" method = "GET" action = "{% url 'search' %}" >
+      <input class="form-control mr-sm-2" id="citySelection" name="query"  type="text" placeholder="City Name">
+      <button class="btn btn-outline-success  my-2 my-sm-0" type="submit">Submit</button>
+  </form>
   
     <div class="today-data">
 
