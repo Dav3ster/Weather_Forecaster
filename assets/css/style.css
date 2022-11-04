@@ -18,6 +18,10 @@ body{
     color: white;
 }
 
+.historyContainer{
+    float: left;
+}
+
 .today-data{
     display: flex;
     justify-content: space-between;
@@ -26,6 +30,7 @@ body{
 
 .date-container{
     font-weight: 100;
+    margin-left: 50px;
 }
 
 .date-container .time{

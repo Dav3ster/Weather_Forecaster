@@ -6,7 +6,9 @@ const cityEl = document.getElementById('city');
 const forecastEl = document.getElementById('forecast');
 const currentTempEl = document.getElementById('current-temperature');
 var cityformEl = document.getElementById("city-form")
+var citiesListEl = document.getElementById("previous-Searches")
 
+var searchHistory = []
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -32,6 +34,26 @@ setInterval(() => {
   dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month];
 }, 1000);
 
+$(document).ready(function () {
+  var storedHistory = JSON.parse(localStorage.getItem("Search History"))
+  searchHistory = storedHistory?storedHistory:[]
+  cityformEl.onsubmit = function(event){
+    event.preventDefault();
+    var city = event.target[0].value;
+    console.log(city)
+    searchHistory.push(city);
+    localStorage.setItem("Search History", JSON.stringify(searchHistory));
+
+    var ol = document.createElement('ol');
+    for(i = 0; i < searchHistory.length; i++)
+    {
+        var li=document.createElement('li');
+        li.innerHTML = searchHistory[i];
+        ol.appendChild(li);
+    }
+    document.getElementById('previous-Searches').appendChild(ol);
+}});
+
 cityformEl.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -53,6 +75,10 @@ cityformEl.addEventListener("submit", (event) => {
         })
     })
     .catch(error => console.log(error));
+
+    while (citiesListEl.hasChildNodes()){
+      citiesListEl.removeChild(citiesListEl.firstChild);
+    }
  })
 
 function displayWeatherData (data){

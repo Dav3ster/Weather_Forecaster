@@ -19,7 +19,12 @@
     <form class="form-inline" id="city-form" method = "GET" action = "{% url 'search' %}" >
       <input class="form-control mr-sm-2" id="citySelection" name="query"  type="text" placeholder="City Name">
       <button class="btn btn-outline-success  my-2 my-sm-0" type="submit">Submit</button>
-  </form>
+    </form>
+
+    <div class="historyContainer">
+      <h2 style="color: white;">Previous Searches</h2>
+      <div class="searchedCities" id="previous-Searches"></div>
+    </div>
   
     <div class="today-data">
 
@@ -86,7 +91,10 @@
     </div>
 
   </div>
- 
+  <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
